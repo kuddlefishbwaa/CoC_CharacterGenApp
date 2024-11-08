@@ -1,2 +1,2 @@
 # CoC_CharacterGenApp
-This web application, built in Ruby on Rails, is designed to streamline the character creation process for the Call of Cthulhu tabletop RPG
+This web application, built in Ruby on Rails, is designed to streamline the character creation process for the Call of Cthulhu tabletop RPG. It serves as a valuable tool for both players and game masters (GMs), offering a faster and more convenient way to create, save, and manage character sheets. The app addresses the traditionally time-consuming setup of character generation by allowing users to quickly generate complete character profiles with randomly assigned attributes and skills. This feature makes the app particularly useful for extended campaigns or for quickly filling in characters when needed.
