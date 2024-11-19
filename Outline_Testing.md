@@ -1,5 +1,7 @@
 # Testing Plan
-Here I will be having all of the sections of the web app planned out as to be able see what kind of tests are needed for each part of the website.
+Here I will be having all of the sections of the web app planned out as to be able see what kind of tests are needed for each part of the website. Most of the testing is going to be based in verification and validation. With some addiontal checks based on how connections are made.
+
+The sections below will have small outlines for each of the tests that are going to be outlined for the web app.
 ## User profiles
 - Username
 ```
@@ -111,38 +113,13 @@ VERIFY Skills has Track (+10)
 Verify drived_characteistics has Characteristics
 Verify drived_characteistics has Skills
 Verify drived_characteistics has Hitpoints = (con+siz)/10
-Verify drived_characteistics has Move = ((str&dex < siz = 7) OR (str OR dex == siz = 8) OR (str&dex > siz = 9) - Age scale
+Verify drived_characteistics has Move = ((str&dex < siz = 7) OR (str OR dex == siz = 8) OR (str&dex > siz = 9)) - Age scale
 Verify drived_characteistics has Damage_bonus = (siz+str SCALE)
 Verify drived_characteistics has Cash
 Verify drived_characteistics has Assets
+Verify drived_characteistics has Spending_level
 Verify drived_characteistics has Magic_points = pow/5
 Verify drived_characteistics has Sanity = pow
 Verify drived_characteistics has Occupation pool = Edu * Occupation_mod
 Verify drived_characteistics has Personal Interests pool= int * 2 
 ```
-## Add Tables
-- Age
-```
-40> no stat change.
-40< (-1 MOV, -5 from STR/CON/DEX, (MAKE [EDU CHECK] 2 times) -5 APP)
-50< (-2 MOV, -10 from STR/CON/DEX, (MAKE [EDU CHECK] 3 times) -10 APP)
-60< (-3 MOV, -20 from STR/CON/DEX, (MAKE [EDU CHECK] 4 times) -15 APP)
-70< (-4 MOV, -40 from STR/CON/DEX, (MAKE [EDU CHECK] 4 times) -20 APP)
-80< (-5 MOV, -80 from STR/CON/DEX, (MAKE [EDU CHECK] 4 times) -25 APP)
-```
-- Bonus and Build damage table (STR + SIZ)
-```
-64> (Damage -2, Build -2)
-65-84 (Damage -1, Build -1)
-85-124 (Damage +0, Build +0)
-125-164 (Damage +1d4, Build +1)
-165-204 (Damage +1d6, Build +2)
-```
-- Backgrounds
-```
-Accountant - (Occ_skill = EDU * 4, Credit = 30-70, [Accounting, Law, Library Use, Listen, Persuade, Spot Hidden, any two other skills as personal or era specialties])
-Acrobat - (Occ_skill = EDU * 2 + DEX * 2, Credit = 9-20, [Climb, Dodge, Jump, Throw, Spot Hidden, Swim, any two other skills as personal or era specialties.]
-Actor - (Occ_skill = EDU * 2 + APP * 2, Credit = 9-40, [Art/Craft (Acting), Disguise, Fighting, History, two interpersonal skills (Charm, Fast Talk, Intimidate, or Persuade), Psychology, any one other skill as a personal or era specialty.]
-```
-## Connections
-
