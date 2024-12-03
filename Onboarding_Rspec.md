@@ -41,11 +41,11 @@ To generate tests for a model for unit testing you want to generate them with...
 
 - For Model testing.
 ```
-rails generate:model [MODEL NAME]
+rails generate rspec:model [MODEL NAME]
 ``` 
 - For Unit testing.
 ```
-rails generate:system [MODEL NAME]
+rails generate rspec:system [MODEL NAME]
 ```
 Once those are generated for a model you can check these files `PLACE HOLDER` to insure that the tests are updated.
 
