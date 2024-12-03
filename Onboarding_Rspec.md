@@ -37,7 +37,7 @@ rails g rspec:install
 
 
 ## Test Setup
-To generate tests for a model for uniti testing you want to generate them with...
+To generate tests for a model for unit testing you want to generate them with...
 
 - For Model testing.
 ```
