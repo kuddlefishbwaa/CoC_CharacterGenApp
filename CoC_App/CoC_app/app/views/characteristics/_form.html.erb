@@ -1,0 +1,67 @@
+<%= form_with(model: characteristic) do |form| %>
+  <% if characteristic.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(characteristic.errors.count, "error") %> prohibited this characteristic from being saved:</h2>
+
+      <ul>
+        <% characteristic.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :Strength, style: "display: block" %>
+    <%= form.number_field :Strength %>
+  </div>
+
+  <div>
+    <%= form.label :Dexterity, style: "display: block" %>
+    <%= form.number_field :Dexterity %>
+  </div>
+
+  <div>
+    <%= form.label :Constitution, style: "display: block" %>
+    <%= form.number_field :Constitution %>
+  </div>
+
+  <div>
+    <%= form.label :Appearance, style: "display: block" %>
+    <%= form.number_field :Appearance %>
+  </div>
+
+  <div>
+    <%= form.label :Power, style: "display: block" %>
+    <%= form.number_field :Power %>
+  </div>
+
+  <div>
+    <%= form.label :Luck, style: "display: block" %>
+    <%= form.number_field :Luck %>
+  </div>
+
+  <div>
+    <%= form.label :Size, style: "display: block" %>
+    <%= form.number_field :Size %>
+  </div>
+
+  <div>
+    <%= form.label :Intelligence, style: "display: block" %>
+    <%= form.number_field :Intelligence %>
+  </div>
+
+  <div>
+    <%= form.label :Education, style: "display: block" %>
+    <%= form.number_field :Education %>
+  </div>
+
+  <div>
+    <%= form.label :Character_id, style: "display: block" %>
+    <%= form.text_field :Character_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+
+<h1><%= @character.Name %></h1>
+
+<%= render @character %>
+
+<h1><%= @character.Name %>'s Characteristics</h1>
+
+<% characteristic = Characteristic.find_by(character_id: @character.id) %>
+<% if characteristic %>
+  <ul>
+    <li>Strength: <%= characteristic.Strength %></li>
+    <li>Dexterity: <%= characteristic.Dexterity %></li>
+    <li>Constitution: <%= characteristic.Constitution %></li>
+    <li>Appearance: <%= characteristic.Appearance %></li>
+    <li>Power: <%= characteristic.Power %></li>
+    <li>Luck: <%= characteristic.Luck %></li>
+    <li>Size: <%= characteristic.Size %></li>
+    <li>Intelligence: <%= characteristic.Intelligence %></li>
+    <li>Education: <%= characteristic.Education %></li>
+  </ul>
+<% else %>
+  <p>This character does not have any characteristics assigned yet.</p>
+<% end %>
+
+<div>
+  <%= link_to "Edit this character", edit_character_path(@character) %> |
+  <%= link_to "Back to characters", characters_path %>
+  <%= button_to "Destroy this character", @character, method: :delete, data: { confirm: "Are you sure?" } %>
+</div>

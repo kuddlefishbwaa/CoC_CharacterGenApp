@@ -1,0 +1,106 @@
+<%= form_with(model: character) do |form| %>
+  <% if character.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(character.errors.count, "error") %> prohibited this character from being saved:</h2>
+
+      <ul>
+        <% character.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :Name, style: "display: block" %>
+    <%= form.text_field :Name %>
+  </div>
+
+  <div>
+    <%= form.label :Birthplace, style: "display: block" %>
+    <%= form.text_field :Birthplace %>
+  </div>
+
+  <div>
+    <%= form.label :Pronouns, style: "display: block" %>
+    <%= form.text_field :Pronouns %>
+  </div>
+
+  <div>
+    <%= form.label :Ocupation, style: "display: block" %>
+    <%= form.text_field :Ocupation %>
+  </div>
+
+  <div>
+    <%= form.label :Residance, style: "display: block" %>
+    <%= form.text_field :Residance %>
+  </div>
+
+  <div>
+    <%= form.label :Age, style: "display: block" %>
+    <%= form.number_field :Age %>
+  </div>
+
+  <% @characteristic.each do |characteristic| %>
+    
+
+
+  <h2>Edit characteristic Information</h2>
+
+  <%= form.fields_for :characteristic do |characteristic_form| %>
+    <div>
+      <%= characteristic_form.label :Strength, style: "display: block" %>
+      <%= characteristic_form.number_field :Strength %>
+    </div>
+
+    <div>
+      <%= form.label :Dexterity, style: "display: block" %>
+      <%= form.number_field :Dexterity %>
+    </div>
+
+    <div>
+      <%= form.label :Constitution, style: "display: block" %>
+      <%= form.number_field :Constitution %>
+   </div>
+
+    <div>
+      <%= form.label :Appearance, style: "display: block" %>
+      <%= form.number_field :Appearance %>
+    </div>
+
+    <div>
+      <%= form.label :Power, style: "display: block" %>
+      <%= form.number_field :Power %>
+    </div>
+
+    <div>
+      <%= form.label :Luck, style: "display: block" %>
+      <%= form.number_field :Luck %>
+    </div>
+
+    <div>
+      <%= form.label :Size, style: "display: block" %>
+      <%= form.number_field :Size %>
+    </div>
+
+    <div>
+      <%= form.label :Intelligence, style: "display: block" %>
+      <%= form.number_field :Intelligence %>
+    </div>
+
+    <div>
+      <%= form.label :Education, style: "display: block" %>
+      <%= form.number_field :Education %>
+    </div>
+
+    <div>
+      <%= form.label :Character_id, style: "display: block" %>
+      <%= form.text_field :Character_id %>
+    </div>
+  <% end %>
+ 
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
