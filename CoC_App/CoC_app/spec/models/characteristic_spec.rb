@@ -9,20 +9,22 @@ RSpec.describe Characteristic, type: :model do
     it { is_expected.to validate_presence_of(attribute) }
   end
 
-  # Validations for Numericality and Range
   describe 'attribute range validations' do
-    let(:characteristic) { build(:characteristic) }
-
-    context 'Strength validation' do
-      it 'is invalid if Strength is out of range' do
-        characteristic.Strength = 20
+    let(:characteristic) { build(:characteristic) } # Only test the attribute you need
+  
+    context 'strength validation' do
+      it 'is invalid if strength is out of range' do
+        characteristic.strength = 20
         expect(characteristic).not_to be_valid
-        characteristic.Strength = 2
+        expect(characteristic.errors[:strength]).to include('must be less than or equal to 18')
+  
+        characteristic.strength = 2
         expect(characteristic).not_to be_valid
+        expect(characteristic.errors[:strength]).to include('must be greater than or equal to 3')
       end
-
-      it 'is valid if Strength is within range' do
-        characteristic.Strength = 10
+  
+      it 'is valid if strength is within range' do
+        characteristic.strength = 10
         expect(characteristic).to be_valid
       end
     end

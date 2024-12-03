@@ -7796,3 +7796,162 @@ FOREIGN KEY ("Character_id")
   [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
   [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddCharacterIdToCharacteristics (20241203040849)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acharacteristics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Strength" integer DEFAULT NULL, "Dexterity" integer DEFAULT NULL, "Constitution" integer DEFAULT NULL, "Appearance" integer DEFAULT NULL, "Power" integer DEFAULT NULL, "Luck" integer DEFAULT NULL, "Size" integer DEFAULT NULL, "Intelligence" integer DEFAULT NULL, "Education" integer DEFAULT NULL, "Character_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_acharacteristics_on_Character_id" ON "acharacteristics" ("Character_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "acharacteristics" ("id","Strength","Dexterity","Constitution","Appearance","Power","Luck","Size","Intelligence","Education","Character_id","created_at","updated_at")
+                     SELECT "id","Strength","Dexterity","Constitution","Appearance","Power","Luck","Size","Intelligence","Education","Character_id","created_at","updated_at" FROM "characteristics"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "characteristics"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "characteristics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Strength" integer DEFAULT NULL, "Dexterity" integer DEFAULT NULL, "Constitution" integer DEFAULT NULL, "Appearance" integer DEFAULT NULL, "Power" integer DEFAULT NULL, "Luck" integer DEFAULT NULL, "Size" integer DEFAULT NULL, "Intelligence" integer DEFAULT NULL, "Education" integer DEFAULT NULL, "Character_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "character_id" integer NOT NULL, CONSTRAINT "fk_rails_684b340366"
+FOREIGN KEY ("Character_id")
+  REFERENCES "Characters" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (9.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "characteristics"[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "characteristics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Strength" integer, "Dexterity" integer, "Constitution" integer, "Appearance" integer, "Power" integer, "Luck" integer, "Size" integer, "Intelligence" integer, "Education" integer, "Character_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE INDEX "index_characteristics_on_Character_id" ON "characteristics" ("Character_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "characters"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "characters" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Name" varchar, "Birthplace" varchar, "Pronouns" varchar, "Ocupation" varchar, "Residance" varchar, "Age" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acharacteristics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Strength" integer DEFAULT NULL, "Dexterity" integer DEFAULT NULL, "Constitution" integer DEFAULT NULL, "Appearance" integer DEFAULT NULL, "Power" integer DEFAULT NULL, "Luck" integer DEFAULT NULL, "Size" integer DEFAULT NULL, "Intelligence" integer DEFAULT NULL, "Education" integer DEFAULT NULL, "Character_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_acharacteristics_on_Character_id" ON "acharacteristics" ("Character_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "acharacteristics" ("id","Strength","Dexterity","Constitution","Appearance","Power","Luck","Size","Intelligence","Education","Character_id","created_at","updated_at")
+                     SELECT "id","Strength","Dexterity","Constitution","Appearance","Power","Luck","Size","Intelligence","Education","Character_id","created_at","updated_at" FROM "characteristics"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "characteristics"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "characteristics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Strength" integer DEFAULT NULL, "Dexterity" integer DEFAULT NULL, "Constitution" integer DEFAULT NULL, "Appearance" integer DEFAULT NULL, "Power" integer DEFAULT NULL, "Luck" integer DEFAULT NULL, "Size" integer DEFAULT NULL, "Intelligence" integer DEFAULT NULL, "Education" integer DEFAULT NULL, "Character_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_684b340366"
+FOREIGN KEY ("Character_id")
+  REFERENCES "Characters" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_characteristics_on_Character_id" ON "characteristics" ("Character_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "characteristics" ("id","Strength","Dexterity","Constitution","Appearance","Power","Luck","Size","Intelligence","Education","Character_id","created_at","updated_at")
+                     SELECT "id","Strength","Dexterity","Constitution","Appearance","Power","Luck","Size","Intelligence","Education","Character_id","created_at","updated_at" FROM "acharacteristics"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "acharacteristics"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241203011354)[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20241203005828);[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-12-03 04:40:35.537985', '2024-12-03 04:40:35.537987') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '56218d304aae224d5891eb5dfe453f8f2aa51579', '2024-12-03 04:40:35.542066', '2024-12-03 04:40:35.542068') RETURNING "key"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "characteristics"[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "characteristics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Strength" integer, "Dexterity" integer, "Constitution" integer, "Appearance" integer, "Power" integer, "Luck" integer, "Size" integer, "Intelligence" integer, "Education" integer, "Character_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE INDEX "index_characteristics_on_Character_id" ON "characteristics" ("Character_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "characters"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "characters" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Name" varchar, "Birthplace" varchar, "Pronouns" varchar, "Ocupation" varchar, "Residance" varchar, "Age" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acharacteristics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Strength" integer DEFAULT NULL, "Dexterity" integer DEFAULT NULL, "Constitution" integer DEFAULT NULL, "Appearance" integer DEFAULT NULL, "Power" integer DEFAULT NULL, "Luck" integer DEFAULT NULL, "Size" integer DEFAULT NULL, "Intelligence" integer DEFAULT NULL, "Education" integer DEFAULT NULL, "Character_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_acharacteristics_on_Character_id" ON "acharacteristics" ("Character_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "acharacteristics" ("id","Strength","Dexterity","Constitution","Appearance","Power","Luck","Size","Intelligence","Education","Character_id","created_at","updated_at")
+                     SELECT "id","Strength","Dexterity","Constitution","Appearance","Power","Luck","Size","Intelligence","Education","Character_id","created_at","updated_at" FROM "characteristics"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "characteristics"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "characteristics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Strength" integer DEFAULT NULL, "Dexterity" integer DEFAULT NULL, "Constitution" integer DEFAULT NULL, "Appearance" integer DEFAULT NULL, "Power" integer DEFAULT NULL, "Luck" integer DEFAULT NULL, "Size" integer DEFAULT NULL, "Intelligence" integer DEFAULT NULL, "Education" integer DEFAULT NULL, "Character_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_684b340366"
+FOREIGN KEY ("Character_id")
+  REFERENCES "Characters" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_characteristics_on_Character_id" ON "characteristics" ("Character_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "characteristics" ("id","Strength","Dexterity","Constitution","Appearance","Power","Luck","Size","Intelligence","Education","Character_id","created_at","updated_at")
+                     SELECT "id","Strength","Dexterity","Constitution","Appearance","Power","Luck","Size","Intelligence","Education","Character_id","created_at","updated_at" FROM "acharacteristics"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "acharacteristics"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20241203011354)[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20241203005828);[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-12-03 04:40:35.597158', '2024-12-03 04:40:35.597160') RETURNING "key"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = 'test', "updated_at" = '2024-12-03 04:40:35.600221' WHERE "ar_internal_metadata"."key" = 'environment'[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '56218d304aae224d5891eb5dfe453f8f2aa51579', '2024-12-03 04:40:35.602236', '2024-12-03 04:40:35.602237') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddCharacterIdToCharacteristics (20241203040849)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acharacteristics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Strength" integer DEFAULT NULL, "Dexterity" integer DEFAULT NULL, "Constitution" integer DEFAULT NULL, "Appearance" integer DEFAULT NULL, "Power" integer DEFAULT NULL, "Luck" integer DEFAULT NULL, "Size" integer DEFAULT NULL, "Intelligence" integer DEFAULT NULL, "Education" integer DEFAULT NULL, "Character_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_acharacteristics_on_Character_id" ON "acharacteristics" ("Character_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "acharacteristics" ("id","Strength","Dexterity","Constitution","Appearance","Power","Luck","Size","Intelligence","Education","Character_id","created_at","updated_at")
+                     SELECT "id","Strength","Dexterity","Constitution","Appearance","Power","Luck","Size","Intelligence","Education","Character_id","created_at","updated_at" FROM "characteristics"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "characteristics"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "characteristics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Strength" integer DEFAULT NULL, "Dexterity" integer DEFAULT NULL, "Constitution" integer DEFAULT NULL, "Appearance" integer DEFAULT NULL, "Power" integer DEFAULT NULL, "Luck" integer DEFAULT NULL, "Size" integer DEFAULT NULL, "Intelligence" integer DEFAULT NULL, "Education" integer DEFAULT NULL, "Character_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "character_id" integer NOT NULL, CONSTRAINT "fk_rails_684b340366"
+FOREIGN KEY ("Character_id")
+  REFERENCES "Characters" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTruncate Tables (4.1ms)[0m  [1m[31mDELETE FROM "characters";
+DELETE FROM "characteristics"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddCharacterIdToCharacteristics (20241203040849)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "acharacteristics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Strength" integer DEFAULT NULL, "Dexterity" integer DEFAULT NULL, "Constitution" integer DEFAULT NULL, "Appearance" integer DEFAULT NULL, "Power" integer DEFAULT NULL, "Luck" integer DEFAULT NULL, "Size" integer DEFAULT NULL, "Intelligence" integer DEFAULT NULL, "Education" integer DEFAULT NULL, "Character_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_acharacteristics_on_Character_id" ON "acharacteristics" ("Character_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "acharacteristics" ("id","Strength","Dexterity","Constitution","Appearance","Power","Luck","Size","Intelligence","Education","Character_id","created_at","updated_at")
+                     SELECT "id","Strength","Dexterity","Constitution","Appearance","Power","Luck","Size","Intelligence","Education","Character_id","created_at","updated_at" FROM "characteristics"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "characteristics"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "characteristics" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "Strength" integer DEFAULT NULL, "Dexterity" integer DEFAULT NULL, "Constitution" integer DEFAULT NULL, "Appearance" integer DEFAULT NULL, "Power" integer DEFAULT NULL, "Luck" integer DEFAULT NULL, "Size" integer DEFAULT NULL, "Intelligence" integer DEFAULT NULL, "Education" integer DEFAULT NULL, "Character_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "character_id" integer NOT NULL, CONSTRAINT "fk_rails_684b340366"
+FOREIGN KEY ("Character_id")
+  REFERENCES "Characters" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
