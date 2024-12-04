@@ -54,6 +54,10 @@ To run the Rspec testing run this command...
 ```
 rspec spec/model/[MODEL NAME]_spec.rb --format documentation
 ```
+For the full testlist
+```
+bundle exec rspec --format documentation
+```
 
 ## Written test format
 These are some examples of how to write testing for Rspec and Rails.
