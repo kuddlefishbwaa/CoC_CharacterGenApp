@@ -1,5 +1,5 @@
 
-# Ruby on Rails Basics
+# Ruby on Rails
 
 This guide outlines the fundamental steps for starting with Ruby on Rails, including setting up a project and running the server.
 
@@ -69,6 +69,6 @@ When you create a new Rails project, the following directories and files are ess
 ## Additional Tips
 
 - **Stopping the Server**: Use `Ctrl + C` in the terminal to stop the running Rails server.
-- **Testing Server Connectivity**: Open your web browser and navigate to the server URL, e.g., `http://0.0.0.0:3000`.
+- **Testing Server Connectivity**: Open your web browser and navigate to the server URL, `http://0.0.0.0:3000`.
 
 This document provides a quick overview of basic Rails commands and server management. For further customization and advanced features, refer to the [Rails Guides](https://guides.rubyonrails.org/).
