@@ -43,7 +43,7 @@ To generate tests for a model for unit testing you want to generate them with...
 ```
 rails generate rspec:model [MODEL NAME]
 ``` 
-- For Unit testing.
+- For System testing.
 ```
 rails generate rspec:system [MODEL NAME]
 ```
