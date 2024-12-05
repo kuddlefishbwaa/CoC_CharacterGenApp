@@ -7967,3 +7967,280 @@ FOREIGN KEY ("Character_id")
   [1m[36mActiveRecord::InternalMetadata Load (2.4ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/characters" for 172.17.0.1 at 2024-12-05 20:12:10 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (2.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CharactersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering characters/index.html.erb within layouts/application
+  [1m[36mCharacter Load (2.5ms)[0m  [1m[34mSELECT "characters".* FROM "characters"[0m
+  ↳ app/views/characters/index.html.erb:6
+  Rendered characters/index.html.erb within layouts/application (Duration: 49.2ms | Allocations: 1594)
+  Rendered layout layouts/application.html.erb (Duration: 2000.2ms | Allocations: 44674)
+Completed 200 OK in 3375ms (Views: 1961.1ms | ActiveRecord: 71.9ms | Allocations: 337421)
+
+
+Started GET "/characters/new" for 172.17.0.1 at 2024-12-05 20:12:16 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CharactersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering characters/new.html.erb within layouts/application
+  Rendered characters/_form.html.erb (Duration: 11.8ms | Allocations: 2593)
+  Rendered characters/new.html.erb within layouts/application (Duration: 25.7ms | Allocations: 2922)
+  Rendered layout layouts/application.html.erb (Duration: 26.9ms | Allocations: 3021)
+Completed 500 Internal Server Error in 65ms (ActiveRecord: 3.0ms | Allocations: 10631)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_with(model: character) do |form| %>
+  <% if character.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(character.errors.count, "error") %> prohibited this character from being saved:</h2>
+
+      <ul>
+        <% character.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :Name, style: "display: block" %>
+    <%= form.text_field :Name %>
+  </div>
+
+  <div>
+    <%= form.label :Birthplace, style: "display: block" %>
+    <%= form.text_field :Birthplace %>
+  </div>
+
+  <div>
+    <%= form.label :Pronouns, style: "display: block" %>
+    <%= form.text_field :Pronouns %>
+  </div>
+
+  <div>
+    <%= form.label :Ocupation, style: "display: block" %>
+    <%= form.text_field :Ocupation %>
+  </div>
+
+  <div>
+    <%= form.label :Residance, style: "display: block" %>
+    <%= form.text_field :Residance %>
+  </div>
+
+  <div>
+    <%= form.label :Age, style: "display: block" %>
+    <%= form.number_field :Age %>
+  </div>
+
+  <% @characteristic.each do |characteristic| %>
+    
+
+
+  <h2>Edit characteristic Information</h2>
+
+  <%= form.fields_for :characteristic do |characteristic_form| %>
+    <div>
+      <%= characteristic_form.label :Strength, style: "display: block" %>
+      <%= characteristic_form.number_field :Strength %>
+    </div>
+
+    <div>
+      <%= form.label :Dexterity, style: "display: block" %>
+      <%= form.number_field :Dexterity %>
+    </div>
+
+    <div>
+      <%= form.label :Constitution, style: "display: block" %>
+      <%= form.number_field :Constitution %>
+   </div>
+
+    <div>
+      <%= form.label :Appearance, style: "display: block" %>
+      <%= form.number_field :Appearance %>
+    </div>
+
+    <div>
+      <%= form.label :Power, style: "display: block" %>
+      <%= form.number_field :Power %>
+    </div>
+
+    <div>
+      <%= form.label :Luck, style: "display: block" %>
+      <%= form.number_field :Luck %>
+    </div>
+
+    <div>
+      <%= form.label :Size, style: "display: block" %>
+      <%= form.number_field :Size %>
+    </div>
+
+    <div>
+      <%= form.label :Intelligence, style: "display: block" %>
+      <%= form.number_field :Intelligence %>
+    </div>
+
+    <div>
+      <%= form.label :Education, style: "display: block" %>
+      <%= form.number_field :Education %>
+    </div>
+
+    <div>
+      <%= form.label :Character_id, style: "display: block" %>
+      <%= form.text_field :Character_id %>
+    </div>
+  <% end %>
+ 
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+):
+1:    <%= form_with(model: character) do |form| %>
+2:      <% if character.errors.any? %>
+3:        <div style="color: red">
+4:          <h2><%= pluralize(character.errors.count, "error") %> prohibited this character from being saved:</h2>
+5:    
+6:          <ul>
+7:            <% character.errors.each do |error| %>
+8:              <li><%= error.full_message %></li>
+9:            <% end %>
+10:          </ul>
+11:        </div>
+12:      <% end %>
+13:    
+14:      <div>
+15:        <%= form.label :Name, style: "display: block" %>
+16:        <%= form.text_field :Name %>
+17:      </div>
+18:    
+19:      <div>
+20:        <%= form.label :Birthplace, style: "display: block" %>
+21:        <%= form.text_field :Birthplace %>
+22:      </div>
+23:    
+24:      <div>
+25:        <%= form.label :Pronouns, style: "display: block" %>
+26:        <%= form.text_field :Pronouns %>
+27:      </div>
+28:    
+29:      <div>
+30:        <%= form.label :Ocupation, style: "display: block" %>
+31:        <%= form.text_field :Ocupation %>
+32:      </div>
+33:    
+34:      <div>
+35:        <%= form.label :Residance, style: "display: block" %>
+36:        <%= form.text_field :Residance %>
+37:      </div>
+38:    
+39:      <div>
+40:        <%= form.label :Age, style: "display: block" %>
+41:        <%= form.number_field :Age %>
+42:      </div>
+43:    
+44:      <% @characteristic.each do |characteristic| %>
+45:        
+46:    
+47:    
+48:      <h2>Edit characteristic Information</h2>
+49:    
+50:      <%= form.fields_for :characteristic do |characteristic_form| %>
+51:        <div>
+52:          <%= characteristic_form.label :Strength, style: "display: block" %>
+53:          <%= characteristic_form.number_field :Strength %>
+54:        </div>
+55:    
+56:        <div>
+57:          <%= form.label :Dexterity, style: "display: block" %>
+58:          <%= form.number_field :Dexterity %>
+59:        </div>
+60:    
+61:        <div>
+62:          <%= form.label :Constitution, style: "display: block" %>
+63:          <%= form.number_field :Constitution %>
+64:       </div>
+65:    
+66:        <div>
+67:          <%= form.label :Appearance, style: "display: block" %>
+68:          <%= form.number_field :Appearance %>
+69:        </div>
+70:    
+71:        <div>
+72:          <%= form.label :Power, style: "display: block" %>
+73:          <%= form.number_field :Power %>
+74:        </div>
+75:    
+76:        <div>
+77:          <%= form.label :Luck, style: "display: block" %>
+78:          <%= form.number_field :Luck %>
+79:        </div>
+80:    
+81:        <div>
+82:          <%= form.label :Size, style: "display: block" %>
+83:          <%= form.number_field :Size %>
+84:        </div>
+85:    
+86:        <div>
+87:          <%= form.label :Intelligence, style: "display: block" %>
+88:          <%= form.number_field :Intelligence %>
+89:        </div>
+90:    
+91:        <div>
+92:          <%= form.label :Education, style: "display: block" %>
+93:          <%= form.number_field :Education %>
+94:        </div>
+95:    
+96:        <div>
+97:          <%= form.label :Character_id, style: "display: block" %>
+98:          <%= form.text_field :Character_id %>
+99:        </div>
+100:      <% end %>
+101:     
+102:    
+103:      <div>
+104:        <%= form.submit %>
+105:      </div>
+106:    <% end %>
+  
+app/views/characters/_form.html.erb:108: syntax error, unexpected end-of-input
+app/views/characters/new.html.erb:3
+Started GET "/characters/new" for 172.17.0.1 at 2024-12-05 20:13:49 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CharactersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering characters/new.html.erb within layouts/application
+  Rendered characters/_form.html.erb (Duration: 369.4ms | Allocations: 8959)
+  Rendered characters/new.html.erb within layouts/application (Duration: 549.3ms | Allocations: 9407)
+  Rendered layout layouts/application.html.erb (Duration: 1082.4ms | Allocations: 41521)
+Completed 200 OK in 2281ms (Views: 1096.7ms | ActiveRecord: 46.6ms | Allocations: 340730)
+
+
+Started POST "/characters" for 172.17.0.1 at 2024-12-05 20:13:56 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CharactersController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "character"=>{"Name"=>"", "Birthplace"=>"", "Pronouns"=>"", "Ocupation"=>"", "Residance"=>"", "Age"=>""}, "commit"=>"Create Character"}
+  Rendering layout layouts/application.html.erb
+  Rendering characters/new.html.erb within layouts/application
+  Rendered characters/_form.html.erb (Duration: 4.6ms | Allocations: 7882)
+  Rendered characters/new.html.erb within layouts/application (Duration: 5.5ms | Allocations: 7961)
+  Rendered layout layouts/application.html.erb (Duration: 34.9ms | Allocations: 9061)
+Completed 422 Unprocessable Content in 50ms (Views: 36.1ms | ActiveRecord: 0.0ms | Allocations: 11333)
+
+
+Started GET "/characters" for 172.17.0.1 at 2024-12-05 20:13:58 +0000
+Cannot render console from 172.17.0.1! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by CharactersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering characters/index.html.erb within layouts/application
+  [1m[36mCharacter Load (1.8ms)[0m  [1m[34mSELECT "characters".* FROM "characters"[0m
+  ↳ app/views/characters/index.html.erb:6
+  Rendered characters/index.html.erb within layouts/application (Duration: 11.0ms | Allocations: 1011)
+  Rendered layout layouts/application.html.erb (Duration: 49.4ms | Allocations: 2116)
+Completed 200 OK in 104ms (Views: 49.4ms | ActiveRecord: 1.7ms | Allocations: 3458)
+
+
