@@ -58,7 +58,7 @@ To test your application locally, you will need to start the Rails server.
 
    While the server is running you can use the following links to navigate the webapp
 - [http://localhost:3000/]
-- [http://localhost:3000/students]
+- [http://localhost:3000/characters]
 
 ## Rails Directory Structure
 
