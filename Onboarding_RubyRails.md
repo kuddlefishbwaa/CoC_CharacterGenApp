@@ -56,6 +56,10 @@ To test your application locally, you will need to start the Rails server.
    ```
    This starts the server on `0.0.0.0:8080`.
 
+   While the server is running you can use the following links to navigate the webapp
+- [http://localhost:3000/]
+- [http://localhost:3000/students]
+
 ## Rails Directory Structure
 
 When you create a new Rails project, the following directories and files are essential:
