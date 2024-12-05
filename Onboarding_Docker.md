@@ -9,7 +9,6 @@ Make sure that docker desktop is installed and open in your computer that will b
 cd 'YOUR FILE PATH\PROJECT NAME'
 ```
 
-### If Docker is not set up
 - While Docker Desktop is open...
 ```
 docker build -t [DOCKER USERNAME]/[IMAGE NAME] .
